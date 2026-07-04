@@ -1,6 +1,6 @@
 ---
 name: opus-executor
-description: Execution muscle for the /duet architect/executor flow. Hand it one precise work-order (intent, exact files, ordered steps, acceptance criteria) and it does the actual reading, code edits, and shell runs, then reports back a short outcome. Also handles recon work-orders: it reads and returns a distilled summary, never raw file dumps. Meant to be dispatched by the duet architect, not for general-purpose use.
+description: Execution muscle for the /duet architect/executor flow. Hand it one precise work-order (intent, exact files, ordered steps, acceptance criteria) and it does the actual reading, code edits, and shell runs, then reports back a short outcome. Also handles recon work-orders (it reads and returns a distilled summary, never raw file dumps). Meant to be dispatched by the duet architect, not for general-purpose use.
 model: opus
 ---
 
