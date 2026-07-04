@@ -30,7 +30,11 @@ Fable plans and hands each work order to the `opus-executor` subagent, which run
 ### What is in here
 
 * `commands/duet.md` the `/duet` command. It tells the main model to act as the architect and delegate.
-* `agents/opus-executor.md` the subagent that runs on Opus and does the editing.
+* `agents/opus-executor.md` the subagent that runs on Opus, does the reading and editing, and reports back a short outcome.
+
+### Why it stays cheap
+
+The planner is the expensive model, so the flow keeps its context tiny: the architect never reads files or runs commands itself. All reading, editing, and recon happen in the executor's own isolated context, and only short outcome reports flow back. Fewer, larger work orders, fanned out in parallel, replace long chains of tiny steps, and the architect checkpoints for a /compact between phases. You keep the planner's full reasoning power while a long session stays light.
 
 ### Note
 
@@ -60,7 +64,11 @@ Fable planifie et passe chaque ordre de travail au subagent `opus-executor`, qui
 ### Ce qu'il y a ici
 
 * `commands/duet.md` la commande `/duet`. Elle dit au modèle principal d'agir comme architecte et de déléguer.
-* `agents/opus-executor.md` le subagent qui roule sur Opus et fait les modifications.
+* `agents/opus-executor.md` le subagent qui roule sur Opus, fait la lecture et les modifications, et renvoie un court rapport.
+
+### Pourquoi ça reste léger
+
+Le planificateur est le modèle coûteux, alors le flow garde son contexte minuscule: l'architecte ne lit jamais de fichiers et ne lance jamais de commandes lui-même. Toute la lecture, l'édition et la reconnaissance se font dans le contexte isolé de l'executor, et seuls de courts rapports de résultat reviennent. Moins de work orders mais plus gros, lancés en parallèle, remplacent les longues chaînes de micro-étapes, et l'architecte propose un /compact entre les phases. Tu gardes toute la puissance de raisonnement du planificateur pendant qu'une longue session reste légère.
 
 ### Note
 
